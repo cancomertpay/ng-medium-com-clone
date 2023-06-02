@@ -15,3 +15,8 @@ a {
     border-bottom: 2px outset black;
     color: black;
 }
+
+.products .brd-bottom {
+    border-bottom: 1px outset rgba(215, 215, 215, 0.332);
+    width: 85%;
+}
