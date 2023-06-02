@@ -1,0 +1,17 @@
+a {
+    text-decoration: none;
+}
+
+.hstack {
+    border-bottom: 1px outset rgba(215, 215, 215, 0.332);
+    width: 85%;
+}
+
+.hstack a {
+    color: rgb(129, 129, 129);
+}
+
+.hstack a:active {
+    border-bottom: 2px outset black;
+    color: black;
+}

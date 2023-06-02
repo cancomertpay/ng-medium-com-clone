@@ -1,0 +1,10 @@
+.topics a {
+    margin-right: 8px;
+    background-color: #f2f2f2;
+    transition: all 0.5s;
+}
+
+.topics a:hover {
+    background-color: #d7d7d7;
+    
+}
