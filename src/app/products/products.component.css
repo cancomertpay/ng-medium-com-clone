@@ -3,8 +3,8 @@ a {
 }
 
 .hstack {
-    border-bottom: 1px outset rgba(215, 215, 215, 0.332);
-    width: 85%;
+    width: 92%;
+    background-color: #fff;
 }
 
 .hstack a {
