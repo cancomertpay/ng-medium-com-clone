@@ -1,135 +1,56 @@
-<div class="hstack gap-3 sticky-top" style="border-bottom: 1px outset rgba(215, 215, 215, 0.332);">
-    <a class="p-2"><i class="bi bi-plus fs-3" style="cursor: pointer;"></i></a>
-    <a class="p-3" style="cursor: pointer;">For You</a>
-    <a class="p-3" style="cursor: pointer;">Following</a>
+<div *ngIf="product.length > 0; else noProducts">
+  <ng-template [ngTemplateOutlet]="productList"></ng-template>
 </div>
 
-<div style="padding-top:50px;">
-  <a  class="d-flex justify-content-start text-dark" href="#">
-    <img class="rounded-circle" width="30px" height="30px" src="https://picsum.photos/200/300" alt="">
-    <div class="d-flex" style="margin-top: 6px; margin-left: 8px;">
-        <h2 style="font-size: 14px;font-weight: 600;">Growing up TCK - Yesim Cimcoz <i class="bi bi-medium text-primary"></i></h2>
-        <p style="font-size: 14px; color: #757575;">
-          <span style="margin: 0 4px ;">.</span>
-          <span>Jan 14</span>
-        </p>
-    </div>
-    <div class="d-flex" style="margin-top: 6px; margin-left: 8px;">
-      <h2 style="font-size: 14px;font-weight: 400;color: #757575;">
-        <i class="bi bi-stars text-warning" style="margin-right: 5px;"></i>Member-only
-      </h2>
-    </div>
-  </a>
-</div>
-<div class="row products">
-  <div class="col-8">
-    <h3 class="fs-4 fw-bold">Product Title</h3>
-    <p class="fs-7 fw-light text-secondary">
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit magni accusantium possimus similique error eius itaque, illo, qui id, iusto quae. Nulla exercitationem reprehenderit cum dolorem sunt debitis, ex expedita!
-    </p>
-    <div class="d-flex justify-content-between mt-4">
-      <div>
-        <a href="#" class="text-secondary">
-          <span class="fs-6 fw-light">3 min read</span>
-          <span class="mx-2 fs-5">.</span>
-          <span class="fs-6 fw-light">Based on your reading history</span>
+<ng-template #productList>
+  <div *ngFor="let product of product" class="products-card">
+    <div *ngIf="product.isActive">
+      <div style="padding-top:50px;">
+        <a  class="d-flex justify-content-start text-dark" href="#">
+          <img class="rounded-circle" width="30px" height="30px" src="{{ product.authorImgUrl }}" alt="">
+          <div class="d-flex" style="margin-top: 6px; margin-left: 8px;">
+              <h2 style="font-size: 14px;font-weight: 600;"> {{ product.author }} <i class="bi bi-medium text-primary"></i></h2>
+              <span class="mx-2" style="font-size: 14px; color: #757575;"> {{ product.postDate }} </span>
+          </div>
+          <div *ngIf="product.isMember" class="d-flex" style="margin-top: 6px; margin-left: 8px;">
+            <h2 style="font-size: 14px;font-weight: 400;color: #757575;">
+              <i class="bi bi-stars text-warning" style="margin-right: 5px;"></i>Member-only
+            </h2>
+          </div>
         </a>
       </div>
-      <div>
-        <a href="#"><i class="bi bi-bookmark text-secondary fs-5"></i></a>
-        <a href="#"><i class="bi bi-dash-circle-dotted text-secondary fs-5 mx-3"></i></a>
-        <a href="#"><i class="bi bi-three-dots text-secondary fs-5"></i></a>
-      </div>
-    </div>
+      <div class="row products">
+        <div class="col-8">
+          <h3 class="fs-4 fw-bold"> {{ product.title }} </h3>
+          <p class="fs-7 fw-light text-secondary">
+            {{ product.description }}
+          </p>
+          <div class="d-flex justify-content-between mt-4">
+            <div>
+              <a href="#" class="text-secondary">
+                <span class="fs-6 fw-light">3 min read</span>
+                <span class="mx-2 fs-5">.</span>
+                <span class="fs-6 fw-light">Based on your reading history</span>
+              </a>
+            </div>
+            <div>
+              <a href="#"><i class="bi bi-bookmark text-secondary fs-5"></i></a>
+              <a href="#"><i class="bi bi-dash-circle-dotted text-secondary fs-5 mx-3"></i></a>
+              <a href="#"><i class="bi bi-three-dots text-secondary fs-5"></i></a>
+            </div>
+          </div>
+        </div>
+        <div class="col-4 d-flex justify-content-center">
+          <img width="122px" height="122px" src="{{ product.postImgUrl }}" alt="">
+        </div>
+        <div style="height: 50px; border-bottom: 1px outset rgba(225, 225, 225, 0.495);width: 91%;"></div>
+      </div> 
+    </div>   
   </div>
-  <div class="col-4 d-flex justify-content-center">
-    <img width="122px" height="122px" src="https://picsum.photos/200/300" alt="">
+</ng-template>
+
+<ng-template #noProducts>
+  <div class="alert alert-danger" >
+    No products
   </div>
-  <div class="brd-bottom" style="height: 50px;"></div>
-</div>    
-<div style="padding-top:50px;">
-  <a  class="d-flex justify-content-start text-dark" href="#">
-    <img class="rounded-circle" width="30px" height="30px" src="https://picsum.photos/200/300" alt="">
-    <div class="d-flex" style="margin-top: 6px; margin-left: 8px;">
-        <h2 style="font-size: 14px;font-weight: 600;">Growing up TCK - Yesim Cimcoz <i class="bi bi-medium text-primary"></i></h2>
-        <p style="font-size: 14px; color: #757575;">
-          <span style="margin: 0 4px ;">.</span>
-          <span>Jan 14</span>
-        </p>
-    </div>
-    <div class="d-flex" style="margin-top: 6px; margin-left: 8px;">
-      <h2 style="font-size: 14px;font-weight: 400;color: #757575;">
-        <i class="bi bi-stars text-warning" style="margin-right: 5px;"></i>Member-only
-      </h2>
-    </div>
-  </a>
-</div>
-<div class="row products">
-  <div class="col-8">
-    <h3 class="fs-4 fw-bold">Product Title</h3>
-    <p class="fs-7 fw-light text-secondary">
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit magni accusantium possimus similique error eius itaque, illo, qui id, iusto quae. Nulla exercitationem reprehenderit cum dolorem sunt debitis, ex expedita!
-    </p>
-    <div class="d-flex justify-content-between mt-4">
-      <div>
-        <a href="#" class="text-secondary">
-          <span class="fs-6 fw-light">3 min read</span>
-          <span class="mx-2 fs-5">.</span>
-          <span class="fs-6 fw-light">Based on your reading history</span>
-        </a>
-      </div>
-      <div>
-        <a href="#"><i class="bi bi-bookmark text-secondary fs-5"></i></a>
-        <a href="#"><i class="bi bi-dash-circle-dotted text-secondary fs-5 mx-3"></i></a>
-        <a href="#"><i class="bi bi-three-dots text-secondary fs-5"></i></a>
-      </div>
-    </div>
-  </div>
-  <div class="col-4 d-flex justify-content-center">
-    <img width="122px" height="122px" src="https://picsum.photos/200/300" alt="">
-  </div>
-  <div class="brd-bottom" style="height: 50px;"></div>
-</div>    
-<div style="padding-top:50px;">
-  <a  class="d-flex justify-content-start text-dark" href="#">
-    <img class="rounded-circle" width="30px" height="30px" src="https://picsum.photos/200/300" alt="">
-    <div class="d-flex" style="margin-top: 6px; margin-left: 8px;">
-        <h2 style="font-size: 14px;font-weight: 600;">Growing up TCK - Yesim Cimcoz <i class="bi bi-medium text-primary"></i></h2>
-        <p style="font-size: 14px; color: #757575;">
-          <span style="margin: 0 4px ;">.</span>
-          <span>Jan 14</span>
-        </p>
-    </div>
-    <div class="d-flex" style="margin-top: 6px; margin-left: 8px;">
-      <h2 style="font-size: 14px;font-weight: 400;color: #757575;">
-        <i class="bi bi-stars text-warning" style="margin-right: 5px;"></i>Member-only
-      </h2>
-    </div>
-  </a>
-</div>
-<div class="row products">
-  <div class="col-8">
-    <h3 class="fs-4 fw-bold">Product Title</h3>
-    <p class="fs-7 fw-light text-secondary">
-      Lorem ipsum dolor sit, amet consectetur adipisicing elit. Impedit magni accusantium possimus similique error eius itaque, illo, qui id, iusto quae. Nulla exercitationem reprehenderit cum dolorem sunt debitis, ex expedita!
-    </p>
-    <div class="d-flex justify-content-between mt-4">
-      <div>
-        <a href="#" class="text-secondary">
-          <span class="fs-6 fw-light">3 min read</span>
-          <span class="mx-2 fs-5">.</span>
-          <span class="fs-6 fw-light">Based on your reading history</span>
-        </a>
-      </div>
-      <div>
-        <a href="#"><i class="bi bi-bookmark text-secondary fs-5"></i></a>
-        <a href="#"><i class="bi bi-dash-circle-dotted text-secondary fs-5 mx-3"></i></a>
-        <a href="#"><i class="bi bi-three-dots text-secondary fs-5"></i></a>
-      </div>
-    </div>
-  </div>
-  <div class="col-4 d-flex justify-content-center">
-    <img width="122px" height="122px" src="https://picsum.photos/200/300" alt="">
-  </div>
-  <div class="brd-bottom" style="height: 50px;"></div>
-</div>    
+</ng-template>
